@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "section": "Javascript",
+    "questions": [
+      {
+        "id": 11,
+        "question1": "What are the scopes of a variable in JavaScript?"
+      },
+      { "id": 12, "question2": "What's the difference between let and var" },
+      { "id": 13, "question3": "Explain Hoisting in javascript" }
+    ]
+  },
+  {
+    "id": 2,
+    "section": "Next.js",
+    "questions": [
+      {
+        "id": 21,
+        "question1": "What is Next.js, and how does it differ from traditional React applications?"
+      },
+      {
+        "id": 22,
+        "question2": "How do you handle routing in Next.js, and what is dynamic routing?"
+      },
+      {
+        "id": 23,
+        "question3": "Explain server-side rendering (SSR) and when to use it in a Next.js application"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "section": "Typescript",
+    "questions": [
+      {
+        "id": 31,
+        "question1": "List the Advantages of TypeScript and why can TypeScript be chosen over JavaScript?"
+      },
+      {
+        "id": 32,
+        "question2": "What is the purpose of the tsconfig.json file?"
+      },
+      { "id": 33, "question3": "Why can TypeScript be chosen over JavaScript?" }
+    ]
+  }
+]
