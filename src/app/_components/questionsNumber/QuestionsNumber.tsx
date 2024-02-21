@@ -1,6 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import MarkButton from '../markButton/MarkButton';
+import { NextArrow, PreviousArrow } from '../svg';
 
 export default function QuestionsNumber() {
   const numbersArray: number[] = Array.from(
@@ -36,28 +37,37 @@ export default function QuestionsNumber() {
   };
 
   return (
-    <div className="flex flex-col w-full ">
-      <div className="mt-[3%] ml-[3%] text-[#4CB087]">
+    <div className="p-5">
+      <div className="p-5 text-[#4CB087]">
         <h2 className="font-semibold text-2xl">Tailwind</h2>
         <p className="text-xl">Question 1 of 5</p>
       </div>
-
-      <div className="flex flex-col items-center mt-[10%]">
-        <p className="text-gray-500">
-          {questions[currentQuestionIndex].question}
-        </p>
-
-        <div className="mt-[7%] text-xl rounded w-[5%] bg-[#4CB087] text-white text-center">
+      <div className="flex flex-col items-center p-5">
+        <div className="overflow-hidden lg:text-2xl flex justify-center items-center text-xs rounded bg-slate-50 w-3/4 text-center h-64 lg:p-5 m-10 p-1 border border-gray-500">
+          {questions[currentQuestionIndex].question}{' '}
+        </div>
+        <div className="m-10 text-2xl rounded w-20 text-slate-500 bg-slate-50 text-center h-15 p-2 border border-gray-500">
           {clickedButton}
         </div>
-
-        <div className="mt-[10%]">
+        <div className="p-5 flex flex-col">
           <MarkButton onClick={handleClick} values={numbersArray} />
+          <div className="flex justify-center items-center p-5 gap-5 ">
+            <button
+              className="flex basis-1/2 justify-end justify-between"
+              onClick={goToPreviousQuestion}
+            >
+              <PreviousArrow />
+              Prev
+            </button>
+            |
+            <button
+              className="flex basis-1/2 justify-between"
+              onClick={goToNextQuestion}
+            >
+              Next <NextArrow />
+            </button>
+          </div>
         </div>
-      </div>
-      <div className="flex justify-around text-[#4CB087]">
-        <button onClick={goToPreviousQuestion}>Previous</button>
-        <button onClick={goToNextQuestion}>Next</button>
       </div>
     </div>
   );
