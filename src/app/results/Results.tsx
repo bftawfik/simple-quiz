@@ -1,4 +1,4 @@
-import ResultSection from '../resultSection/resultSection';
+import ResultsSection from '../_components/resultsSection/ResultsSection';
 
 interface SectionResults {
   id: number;
@@ -7,14 +7,14 @@ interface SectionResults {
   score: number;
 }
 
-interface ResultsProps {
+interface ResultsPageProps {
   sectionResults: SectionResults[];
 }
-const Results = ({ sectionResults }: ResultsProps) => {
+const ResultsPage = ({ sectionResults }: ResultsPageProps) => {
   return (
     <div className="flex justify-center items-center">
       {sectionResults.map((sectionResult) => (
-        <ResultSection
+        <ResultsSection
           key={sectionResult.id}
           category={sectionResult.category}
           question={sectionResult.question}
@@ -25,4 +25,4 @@ const Results = ({ sectionResults }: ResultsProps) => {
   );
 };
 
-export default Results;
+export default ResultsPage;
