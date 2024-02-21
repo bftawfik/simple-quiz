@@ -1,25 +1,34 @@
-"use client"
-import React, { useState } from "react";
-import MarkButton from "./MarkButton";
+'use client';
+import React, { useState } from 'react';
+import MarkButton from '../markButton/MarkButton';
 
 export default function QuestionsNumber() {
-  const numbersArray: number[] = Array.from({ length: 10 }, (_, index) => index + 1);
-  const [clickedButton, setClickedButton] = useState(0); 
+  const numbersArray: number[] = Array.from(
+    { length: 10 },
+    (_, index) => index + 1
+  );
+  const [clickedButton, setClickedButton] = useState(0);
 
   const handleClick = (value: number) => {
     console.log(`Button ${value} clicked`);
-    setClickedButton(value); 
+    setClickedButton(value);
   };
 
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const questions: { id: number, question: string }[] = [
-    { id: 1, question: "List the Advantages of TypeScript and why can TypeScript be chosen over JavaScript?" },
-    { id: 2, question: "What are the main features of React?" },
-    { id: 3, question: "Explain the concept of state in React." },
+  const questions: { id: number; question: string }[] = [
+    {
+      id: 1,
+      question:
+        'List the Advantages of TypeScript and why can TypeScript be chosen over JavaScript?',
+    },
+    { id: 2, question: 'What are the main features of React?' },
+    { id: 3, question: 'Explain the concept of state in React.' },
   ];
 
   const goToNextQuestion = () => {
-    setCurrentQuestionIndex((prevIndex) => Math.min(prevIndex + 1, questions.length - 1));
+    setCurrentQuestionIndex((prevIndex) =>
+      Math.min(prevIndex + 1, questions.length - 1)
+    );
   };
 
   const goToPreviousQuestion = () => {

@@ -1,7 +1,5 @@
-import QuestionsNumber from "./Components/QuestionsNumber";
+import QuestionsNumber from './_components/questionsNumber/QuestionsNumber';
 
 export default function Home() {
-  return (
-<QuestionsNumber/>
-  );
+  return <QuestionsNumber />;
 }
