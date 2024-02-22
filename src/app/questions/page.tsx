@@ -1,8 +1,8 @@
-import React from 'react'
-import QuestionsNumber from '../_components/questionNumber/QuestionsNumber'
+import QuestionsSlider from './_components/questionSlide/QuestionSlide';
+import data from '@/../../data.json';
 
-export default function page() {
-  return (
-    <QuestionsNumber />
-  )
-}
+const Home = () => {
+  return <QuestionsSlider data={data} />;
+};
+
+export default Home;
