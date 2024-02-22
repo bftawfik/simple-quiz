@@ -1,5 +1,5 @@
-import HomePage from './_components/homePage/HomePage';
+import StartScreen from './_components/startScreen/StartScreen';
 
 export default function Home() {
-  return <HomePage />;
+  return <StartScreen />;
 }
