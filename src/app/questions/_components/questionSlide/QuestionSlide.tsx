@@ -1,14 +1,17 @@
-'use client';
-import { useState } from 'react';
+"use client";
+import { useState } from "react";
 
-import { NextArrow, PreviousArrow } from '@/app/_components/svg';
+import { NextArrow, PreviousArrow } from "@/app/_components/svg";
 
-import ScoreSelectors from '../scoreSelectors/scoreSelectors';
+import ScoreSelectors from "../scoreSelectors/scoreSelectors";
+import { useDispatch } from "react-redux";
+import { Section, setScore } from "@/redux/questions/questionsSlice";
 
-const QuestionsSlider = ({ data }: any) => {
+const QuestionsSlider = ({ data }: { data: Section[] }) => {
+  const dispatch = useDispatch();
+
   const [sectionIndex, setSectionIndex] = useState(0);
   const [questionIndex, setQuestionIndex] = useState(0);
-  const [score, setScore] = useState(0);
 
   const section = data[sectionIndex];
   const question = section.questions[questionIndex];
@@ -17,7 +20,13 @@ const QuestionsSlider = ({ data }: any) => {
   const currentQuestionNumber = questionIndex + 1;
 
   const handleClick = (value: number) => {
-    setScore(value);
+    dispatch(
+      setScore({
+        sectionId: sectionIndex,
+        questionId: questionIndex,
+        score: value,
+      })
+    );
   };
 
   const handleNextQuestion = () => {
@@ -29,7 +38,6 @@ const QuestionsSlider = ({ data }: any) => {
         setQuestionIndex(0);
       }
     }
-    setScore(0);
   };
 
   const handlePreviousQuestion = () => {
@@ -41,7 +49,6 @@ const QuestionsSlider = ({ data }: any) => {
         setQuestionIndex(data[sectionIndex - 1].questions.length - 1);
       }
     }
-    setScore(0);
   };
 
   const PrevDisabled = questionIndex === 0 && sectionIndex === 0;
@@ -58,27 +65,27 @@ const QuestionsSlider = ({ data }: any) => {
         {question.question}
       </div>
       <div className="text-xl rounded-md w-20 text-slate-800 bg-slate-50 text-center h-15 p-2 border border-gray-300 shadow-sm">
-        {score}
+        {question.score}
       </div>
       <ScoreSelectors onClick={handleClick} />
       <div className="flex gap-5 items-center ">
         <button
           className={`flex gap-12 hover:bg-slate-100 rounded-md p-1 ${
-            PrevDisabled ? 'text-white' : null
+            PrevDisabled ? "text-white" : null
           }`}
           onClick={handlePreviousQuestion}
         >
-          <PreviousArrow fill={`${PrevDisabled ? 'white' : 'black'}`} />
+          <PreviousArrow fill={`${PrevDisabled ? "white" : "black"}`} />
           Prev
         </button>
         |
         <button
           className={`flex gap-12 hover:bg-slate-100 rounded-md p-1 ${
-            NextDisabled ? 'text-white' : null
+            NextDisabled ? "text-white" : null
           }`}
           onClick={handleNextQuestion}
         >
-          Next <NextArrow fill={`${NextDisabled ? 'white' : 'black'}`} />
+          Next <NextArrow fill={`${NextDisabled ? "white" : "black"}`} />
         </button>
       </div>
     </div>

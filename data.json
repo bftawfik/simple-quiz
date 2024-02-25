@@ -5,10 +5,15 @@
     "questions": [
       {
         "id": 11,
-        "question": "What are the scopes of a variable in JavaScript?"
+        "question": "What are the scopes of a variable in JavaScript?",
+        "score": 0
       },
-      { "id": 12, "question": "What's the difference between let and var" },
-      { "id": 13, "question": "Explain Hoisting in javascript" }
+      {
+        "id": 12,
+        "question": "What's the difference between let and var",
+        "score": 0
+      },
+      { "id": 13, "question": "Explain Hoisting in javascript", "score": 0 }
     ]
   },
   {
@@ -17,15 +22,18 @@
     "questions": [
       {
         "id": 21,
-        "question": "What is Next.js, and how does it differ from traditional React applications?"
+        "question": "What is Next.js, and how does it differ from traditional React applications?",
+        "score": 0
       },
       {
         "id": 22,
-        "question": "How do you handle routing in Next.js, and what is dynamic routing?"
+        "question": "How do you handle routing in Next.js, and what is dynamic routing?",
+        "score": 0
       },
       {
         "id": 23,
-        "question": "Explain server-side rendering (SSR) and when to use it in a Next.js application"
+        "question": "Explain server-side rendering (SSR) and when to use it in a Next.js application",
+        "score": 0
       }
     ]
   },
@@ -35,13 +43,19 @@
     "questions": [
       {
         "id": 31,
-        "question": "List the Advantages of TypeScript and why can TypeScript be chosen over JavaScript?"
+        "question": "List the Advantages of TypeScript and why can TypeScript be chosen over JavaScript?",
+        "score": 0
       },
       {
         "id": 32,
-        "question": "What is the purpose of the tsconfig.json file?"
+        "question": "What is the purpose of the tsconfig.json file?",
+        "score": 0
       },
-      { "id": 33, "question": "Why can TypeScript be chosen over JavaScript?" }
+      {
+        "id": 33,
+        "question": "Why can TypeScript be chosen over JavaScript?",
+        "score": 0
+      }
     ]
   }
 ]

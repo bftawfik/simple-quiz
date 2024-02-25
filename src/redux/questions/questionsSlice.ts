@@ -1,28 +1,46 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import type { RootState } from '@/redux/store'
-import data from "../../../data.json"
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import data from "../../../data.json";
 
+interface Question {
+  id: number;
+  question: string;
+  score: number;
+}
+export interface Section {
+  id: number;
+  section: string;
+  questions: Question[];
+}
 interface QuestionState {
- value:{}
+  value: Section[];
 }
 
-
 const initialState: QuestionState = {
-value: data,
+  value: data as Section[],
 };
 
 const questionsSlice = createSlice({
-  name: 'questions',
+  name: "questions",
   initialState,
   reducers: {
-    setQuestions(state, action: PayloadAction<{}>) {
+    setQuestions: (state, action: PayloadAction<Section[]>) => {
       state.value = action.payload;
+    },
+
+    setScore: (
+      state,
+      action: PayloadAction<{
+        score: number;
+        sectionId: number;
+        questionId: number;
+      }>
+    ) => {
+      const { score, sectionId, questionId } = action.payload;
+      state.value[sectionId].questions[questionId].score = score;
     },
   },
 });
 
-export const { setQuestions } = questionsSlice.actions;
+export const { setQuestions, setScore } = questionsSlice.actions;
 
-export const selectQuestions = (state: RootState) => state.questions.value;
-
-export default questionsSlice.reducer
+export default questionsSlice.reducer;
