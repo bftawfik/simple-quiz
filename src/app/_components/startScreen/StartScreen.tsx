@@ -1,18 +1,22 @@
-import Link from 'next/link';
-import React from 'react';
+'use client';
+
+import { useRouter } from 'next/navigation';
+
+import Button from '../button/Button';
 
 export default function StartScreen() {
+  const router = useRouter();
+
+  const handleClick = (url: string) => {
+    router.push(url);
+  };
   return (
-    <div className="flex flex-col items-center w-full">
-      <h1 className="text-main font-extrabold text-5xl mt-[10%]">
-        Welcome to Our Questioner
+    <div className="flex flex-col items-center space-y-10">
+      <h1 className="text-emerald-500 font-bold text-5xl mt-10">
+        Welcome to Our Questionaire
       </h1>
-      <Link
-        href="/questions"
-        className="flex items-center justify-center text-white bg-main rounded w-[10%] mt-[10%] text-center h-10"
-      >
-        Start
-      </Link>
+      <Button text="Start" onClick={() => handleClick('/questions')} />
+      <Button text="Custom JSON" onClick={() => handleClick('/addjson')} />
     </div>
   );
 }

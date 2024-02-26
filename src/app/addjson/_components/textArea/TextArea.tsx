@@ -1,13 +1,25 @@
 'use client';
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
-const TextArea: React.FC = () => {
+import { confirmAlert } from 'react-confirm-alert';
+
+import Button from '@/app/_components/button/Button';
+
+import 'react-confirm-alert/src/react-confirm-alert.css';
+import AlertMessage from '../alertMessage/AlertMessage';
+
+const TextArea = () => {
   const router = useRouter();
   const [jsonInput, setJsonInput] = useState<string>('');
   const [error, setError] = useState<string | null>(null);
   const [showDetailedError, setShowDetailedError] = useState<boolean>(false);
+  const [submitted, setSubmitted] = useState(false);
+
+  const onConfirm = () => {
+    return router.push('/');
+  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const value = e.target.value;
@@ -19,7 +31,8 @@ const TextArea: React.FC = () => {
     try {
       const jsonData = JSON.parse(jsonInput);
       if (jsonData && typeof jsonData === 'object') {
-        router.push('/success');
+        setSubmitted(true);
+        alert('Data submitted successfully');
       } else {
         throw new Error('Input is not a valid JSON object');
       }
@@ -32,10 +45,28 @@ const TextArea: React.FC = () => {
     }
   };
 
+  const handleAlert = () => {
+    confirmAlert({
+      customUI: ({ onClose }) => {
+        return (
+          <AlertMessage
+            message="Are you sure you want to leave the page? Any unsubmitted data will be lost"
+            onClose={onClose}
+            onConfirm={onConfirm}
+          />
+        );
+      },
+    });
+  };
+
+  if (submitted) {
+    window.location.reload();
+  }
+
   return (
     <div>
       <textarea
-        className="w-full h-40 p-4 border rounded-md"
+        className="w-full h-40 p-4 border rounded-md focus:ring-emerald-500"
         placeholder="Enter valid JSON here..."
         value={jsonInput}
         onChange={handleInputChange}
@@ -54,12 +85,10 @@ const TextArea: React.FC = () => {
           )}
         </div>
       )}
-      <button
-        className="mt-4 bg-emerald-500 text-white px-4 py-2 rounded hover:bg-emerald-400"
-        onClick={handleSubmit}
-      >
-        Submit
-      </button>
+      <div className="flex space-x-5 p-5">
+        <Button text="Submit" onClick={handleSubmit} />
+        <Button text="Return to Homepage" onClick={handleAlert} />
+      </div>
     </div>
   );
 };
