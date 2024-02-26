@@ -56,8 +56,8 @@ const QuestionsSlider = ({ data }: { data: Section[] }) => {
     questionIndex + 1 === totalQuestions && sectionIndex + 1 === data.length;
 
   return (
-    <div className="flex flex-col items-center space-y-12">
-      <div className="text-center items-start text-emerald-500 mt-12">
+    <div className="flex flex-col items-center space-y-10">
+      <div className="text-center items-start text-emerald-500 mt-10">
         <h1 className="font-semibold text-2xl">{section.section}</h1>
         Question {currentQuestionNumber} of {totalQuestions}
       </div>
