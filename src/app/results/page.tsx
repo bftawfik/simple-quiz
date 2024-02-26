@@ -1,28 +1,10 @@
-import ResultsSection from '../_components/resultsSection/ResultsSection';
+import AllSectionsResults from "@/app/_components/allSectionsResults/AllSectionsResults";
 
-interface SectionResults {
-  id: number;
-  category: string;
-  question: string;
-  score: number;
-}
-
-interface ResultsPageProps {
-  sectionResults: SectionResults[];
-}
-const ResultsPage = ({ sectionResults }: ResultsPageProps) => {
+const ResultsPage = () => {
   return (
     <div className="flex justify-center items-center">
-      {sectionResults.map((sectionResult) => (
-        <ResultsSection
-          key={sectionResult.id}
-          category={sectionResult.category}
-          question={sectionResult.question}
-          score={sectionResult.score}
-        />
-      ))}
+      <AllSectionsResults sectionResults={[]} />
     </div>
   );
 };
-
 export default ResultsPage;
