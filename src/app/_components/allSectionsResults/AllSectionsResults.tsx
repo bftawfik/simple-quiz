@@ -1,24 +1,17 @@
+import { Section } from "@/redux/questions/questionsSlice";
 import SectionResults from "../sectionResults/SectionResults";
 
-interface SectionResults {
-  id: number;
-  category: string;
-  question: string;
-  score: number;
-}
-
 interface AllSectionsResultsProps {
-  sectionResults: SectionResults[];
+  sectionResults: Section[];
 }
 const AllSectionsResults = ({ sectionResults }: AllSectionsResultsProps) => {
   return (
-    <div>
+    <div className="w-full flex flex-col items-center gap-4">
       {sectionResults.map((sectionResult) => (
         <SectionResults
+          label={sectionResult.section}
           key={sectionResult.id}
-          category={sectionResult.category}
-          question={sectionResult.question}
-          score={sectionResult.score}
+          questions={sectionResult.questions}
         />
       ))}
     </div>

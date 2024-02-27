@@ -6,10 +6,11 @@ import { NextArrow, PreviousArrow } from "@/app/_components/svg";
 import ScoreSelectors from "../scoreSelectors/scoreSelectors";
 import { useDispatch } from "react-redux";
 import { Section, setScore } from "@/redux/questions/questionsSlice";
+import { useRouter } from "next/navigation";
 
 const QuestionsSlider = ({ data }: { data: Section[] }) => {
   const dispatch = useDispatch();
-
+  const router = useRouter();
   const [sectionIndex, setSectionIndex] = useState(0);
   const [questionIndex, setQuestionIndex] = useState(0);
 
@@ -40,6 +41,10 @@ const QuestionsSlider = ({ data }: { data: Section[] }) => {
     }
   };
 
+  const handleFinish = () => {
+    router.push("/results");
+  };
+
   const handlePreviousQuestion = () => {
     if (questionIndex > 0) {
       setQuestionIndex(questionIndex - 1);
@@ -51,8 +56,8 @@ const QuestionsSlider = ({ data }: { data: Section[] }) => {
     }
   };
 
-  const PrevDisabled = questionIndex === 0 && sectionIndex === 0;
-  const NextDisabled =
+  const isFirstQuestion = questionIndex === 0 && sectionIndex === 0;
+  const isLastQuestion =
     questionIndex + 1 === totalQuestions && sectionIndex + 1 === data.length;
 
   return (
@@ -71,22 +76,31 @@ const QuestionsSlider = ({ data }: { data: Section[] }) => {
       <div className="flex gap-5 items-center ">
         <button
           className={`flex gap-12 hover:bg-slate-100 rounded-md p-1 ${
-            PrevDisabled ? "text-white" : null
+            isFirstQuestion ? "text-white" : null
           }`}
           onClick={handlePreviousQuestion}
         >
-          <PreviousArrow fill={`${PrevDisabled ? "white" : "black"}`} />
+          <PreviousArrow fill={`${isFirstQuestion ? "white" : "black"}`} />
           Prev
         </button>
         |
-        <button
-          className={`flex gap-12 hover:bg-slate-100 rounded-md p-1 ${
-            NextDisabled ? "text-white" : null
-          }`}
-          onClick={handleNextQuestion}
-        >
-          Next <NextArrow fill={`${NextDisabled ? "white" : "black"}`} />
-        </button>
+        {isLastQuestion ? (
+          <button
+            className={`flex gap-12 hover:bg-slate-100 rounded-md p-1 `}
+            onClick={handleFinish}
+          >
+            Finish <NextArrow />
+          </button>
+        ) : (
+          <button
+            className={`flex gap-12 hover:bg-slate-100 rounded-md p-1 ${
+              isLastQuestion ? "text-white" : null
+            }`}
+            onClick={handleNextQuestion}
+          >
+            Next <NextArrow fill={`${isLastQuestion ? "white" : "black"}`} />
+          </button>
+        )}
       </div>
     </div>
   );
