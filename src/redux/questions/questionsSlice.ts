@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import data from "../../../data.json";
 
-interface Question {
+export interface Question {
   id: number;
   question: string;
   score: number;
@@ -11,7 +11,7 @@ export interface Section {
   section: string;
   questions: Question[];
 }
-interface QuestionState {
+export interface QuestionState {
   value: Section[];
 }
 

@@ -1,15 +1,33 @@
+import { getTotalScore } from "@/app/_helpers";
+import { Question } from "@/redux/questions/questionsSlice";
+
 interface ResultsSectionProps {
-  category: string;
-  question: string;
-  score: number;
+  label: string;
+  questions: Question[];
 }
 
-const SectionResults = ({ category, question, score }: ResultsSectionProps) => {
+const SectionResults = ({ label, questions }: ResultsSectionProps) => {
+  const score = (getTotalScore(questions) / questions.length) * 10;
+  const roundedScore = Math.round(score);
+  const scoreText = questions
+    ? `${roundedScore !== score ? "~" : ""}${roundedScore}%`
+    : "0%";
   return (
-    <div className="bg-opacity-50 bg-emerald-500 m-2 p-2 rounded-lg w-3/6">
-      <h1 className="text-base font-bold">{category}</h1>
-      <p className="text-white text-base font-normal">{question}</p>
-      <p>Score: {score}/10</p>
+    <div className=" bg-neutral-100/50 m-2 pt-5 pb-3 px-5 max-w-[800px] w-full rounded-lg">
+      <h1 className="text-xl font-bold pb-4 border-b-2 border-teal-200 mb-4">
+        {label} <span>({`${scoreText}`})</span>
+      </h1>
+      {questions.map((question) => (
+        <div
+          className="py-4 border-b last:border-none text-black text-base font-normal flex justify-between gap-4 w-full items-center  "
+          key={question.id}
+        >
+          <p className="">{question.question}</p>
+          <p className="text-bold text-xl bg-neutral-200 p-4 rounded-lg w-[50px] h-[50px] flex  justify-center items-center">
+            {question.score}
+          </p>
+        </div>
+      ))}
     </div>
   );
 };
