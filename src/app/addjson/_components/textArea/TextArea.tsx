@@ -28,7 +28,7 @@ const TextArea = () => {
   const questions = useSelector((state: RootState) => state.questions.value);
 
   useMemo(() => {
-    setJsonInput(JSON.stringify(questions));
+    setJsonInput(JSON.stringify(questions, null, "\t"));
   }, [questions]);
 
   const onConfirm = () => {
