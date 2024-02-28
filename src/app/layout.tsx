@@ -1,5 +1,4 @@
-"use client"
-import type { Metadata } from "next";
+"use client";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { store } from "@/redux/store";
@@ -15,7 +14,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <Provider store={store}>
-        <body className={inter.className}>{children}</body>
+        <body className={inter.className}>
+          <div className="flex flex-col overflow-y-auto w-full h-screen items-center">
+            {children}
+          </div>
+        </body>
       </Provider>
     </html>
   );

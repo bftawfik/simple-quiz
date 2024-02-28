@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { NextArrow, PreviousArrow } from "@/app/_components/svg";
 
@@ -56,12 +56,34 @@ const QuestionsSlider = ({ data }: { data: Section[] }) => {
     }
   };
 
+  useEffect(() => {
+    document.addEventListener("keydown", handleKeyPress);
+
+    return function () {
+      document.removeEventListener("keydown", handleKeyPress);
+    };
+  }, [questionIndex]);
+
+  const handleKeyPress = (e: KeyboardEvent) => {
+    if (e.key === "ArrowLeft") {
+      handlePreviousQuestion();
+    } else if (e.key === "ArrowRight") {
+      isLastQuestion ? handleFinish() : handleNextQuestion();
+    } else if (e.key === "f") {
+      handleClick(10);
+    } else {
+      const keyValue = Number(e.key);
+      if (Number.isNaN(keyValue)) return null;
+      handleClick(keyValue);
+    }
+  };
+
   const isFirstQuestion = questionIndex === 0 && sectionIndex === 0;
   const isLastQuestion =
     questionIndex + 1 === totalQuestions && sectionIndex + 1 === data.length;
 
   return (
-    <div className="flex flex-col items-center space-y-10">
+    <div className="flex flex-col w-[800px] h-full justify-evenly items-center space-y-10">
       <div className="text-center items-start text-emerald-500 mt-10">
         <h1 className="font-semibold text-2xl">{section.section}</h1>
         Question {currentQuestionNumber} of {totalQuestions}
