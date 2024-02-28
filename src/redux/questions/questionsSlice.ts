@@ -26,6 +26,11 @@ const questionsSlice = createSlice({
     setQuestions: (state, action: PayloadAction<Section[]>) => {
       state.value = action.payload;
     },
+    resetScore: (state) => {
+      state.value.forEach((item) =>
+        item.questions.forEach((question) => (question.score = 0))
+      );
+    },
 
     setScore: (
       state,
@@ -41,6 +46,6 @@ const questionsSlice = createSlice({
   },
 });
 
-export const { setQuestions, setScore } = questionsSlice.actions;
+export const { setQuestions, setScore, resetScore } = questionsSlice.actions;
 
 export default questionsSlice.reducer;
