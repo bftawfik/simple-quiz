@@ -6,14 +6,23 @@
       {
         "id": 11,
         "question": "What are the scopes of a variable in JavaScript?",
-        "score": 0
+        "score": 0,
+        "hints": [
+          "hint1 hat are the scopes of a variable in JavaScrip ok pls palsjdjlsoi dhumd sjheus dj sdjh the scopes of a variable in JavaScrip ok pls",
+          "hint2"
+        ]
       },
       {
         "id": 12,
         "question": "What's the difference between let and var",
         "score": 0
       },
-      { "id": 13, "question": "Explain Hoisting in javascript", "score": 0 }
+      {
+        "id": 13,
+        "question": "Explain Hoisting in javascript",
+        "score": 0,
+        "hints": ["hint1", "hint2", "hint3"]
+      }
     ]
   },
   {
@@ -23,17 +32,20 @@
       {
         "id": 21,
         "question": "What is Next.js, and how does it differ from traditional React applications?",
-        "score": 0
+        "score": 0,
+        "hints": ["hint1", "hint2", "hint3"]
       },
       {
         "id": 22,
         "question": "How do you handle routing in Next.js, and what is dynamic routing?",
-        "score": 0
+        "score": 0,
+        "hints": ["hint1", "hint2", "hint3"]
       },
       {
         "id": 23,
         "question": "Explain server-side rendering (SSR) and when to use it in a Next.js application",
-        "score": 0
+        "score": 0,
+        "hints": ["hint1", "hint2", "hint3"]
       }
     ]
   },
@@ -44,17 +56,20 @@
       {
         "id": 31,
         "question": "List the Advantages of TypeScript and why can TypeScript be chosen over JavaScript?",
-        "score": 0
+        "score": 0,
+        "hints": ["hint1", "hint2"]
       },
       {
         "id": 32,
         "question": "What is the purpose of the tsconfig.json file?",
-        "score": 0
+        "score": 0,
+        "hints": ["hint1", "hint2", "hint3"]
       },
       {
         "id": 33,
         "question": "Why can TypeScript be chosen over JavaScript?",
-        "score": 0
+        "score": 0,
+        "hints": ["hint1"]
       }
     ]
   }

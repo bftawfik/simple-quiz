@@ -5,6 +5,7 @@ export interface Question {
   id: number;
   question: string;
   score: number;
+  hints: string[];
 }
 export interface Section {
   id: number;
