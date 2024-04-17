@@ -7,6 +7,7 @@ import ScoreSelectors from "../scoreSelectors/scoreSelectors";
 import { useDispatch } from "react-redux";
 import { Section, setScore } from "@/redux/questions/questionsSlice";
 import { useRouter } from "next/navigation";
+import HintsSection from "@/app/_components/hintsSection/HintsSection";
 
 const QuestionsSlider = ({ data }: { data: Section[] }) => {
   const dispatch = useDispatch();
@@ -88,9 +89,11 @@ const QuestionsSlider = ({ data }: { data: Section[] }) => {
         <h1 className="font-semibold text-2xl">{section.section}</h1>
         Question {currentQuestionNumber} of {totalQuestions}
       </div>
-      <div className="lg:text-2xl text-lg md:text-xl flex justify-center items-center rounded-lg bg-slate-50 w-3/4 text-center h-64 lg:p-5 p-1 border border-gray-300 shadow-sm">
+      <div className="lg:text-2xl text-lg md:text-xl flex justify-center items-center rounded-lg bg-slate-50 w-3/4 text-center h-32 lg:p-5 p-1 border border-gray-300 shadow-sm">
         {question.question}
       </div>
+      {question.hints ? <HintsSection hints={question.hints} /> : null}
+
       <div className="text-xl rounded-md w-20 text-slate-800 bg-slate-50 text-center h-15 p-2 border border-gray-300 shadow-sm">
         {question.score}
       </div>
